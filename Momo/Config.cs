@@ -13,10 +13,10 @@ namespace Momo
     }
     public class ConfigChrome
     {
-        public string BinaryLocation { get; set; } = @"D:\Gologin\Browser\orbita-browser-113\chrome.exe";
-        public string UserDataDir { get; set; } = @"--user-data-dir=D:\Gologin\Profiles\{id}";
-        public string Extension { get; set; } = @"--load-extension=D:\Gologin\Extensions\cookies-ext\{id},D:\Gologin\Extensions\passwords-ext\{id}";
-        public string[] Arguments { get; set; } = new[] { "--font-masking-mode=2", "--profile-directory=Default", "--disable-encryption", "--donut-pie=undefined", "--lang=en-US", "--flag-switches-begin", "--flag-switches-end" };
+        public string BinaryLocation { get; set; } = "";
+        public string UserDataDir { get; set; } = "";
+        public string Extension { get; set; } = "";
+        public string[] Arguments { get; set; } 
     }
     public class ConfigTikTok
     {

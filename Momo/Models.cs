@@ -19,7 +19,7 @@ namespace Momo
     public class Data
     {
         public int cache { get; set; }
-        public List<TikTokFollow> data { get; set; }
+        public List<TikTokFollow> tiktok_follow { get; set; }
     }
 
 }

@@ -1,38 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\trick\\source\\repos\\Momo\\Momo\\Momo.csproj": {}
+    "/Users/phamcuong/C#/TraodoisubAPI/Momo/Momo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\trick\\source\\repos\\Momo\\Momo\\Momo.csproj": {
+    "/Users/phamcuong/C#/TraodoisubAPI/Momo/Momo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\trick\\source\\repos\\Momo\\Momo\\Momo.csproj",
+        "projectUniqueName": "/Users/phamcuong/C#/TraodoisubAPI/Momo/Momo.csproj",
         "projectName": "Momo",
-        "projectPath": "C:\\Users\\trick\\source\\repos\\Momo\\Momo\\Momo.csproj",
-        "packagesPath": "C:\\Users\\trick\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\trick\\source\\repos\\Momo\\Momo\\obj\\",
+        "projectPath": "/Users/phamcuong/C#/TraodoisubAPI/Momo/Momo.csproj",
+        "packagesPath": "/Users/phamcuong/.nuget/packages/",
+        "outputPath": "/Users/phamcuong/C#/TraodoisubAPI/Momo/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\DevExpress 22.2\\Components\\Offline Packages",
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\trick\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 22.2.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/phamcuong/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\DevExpress 22.2\\Components\\System\\Components\\Packages": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "D:\\mype": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://nuget.devexpress.com/bxy9tU2LCJDCz5jnWBoRykXUu9bj7wwA4ROBTTu5vrUlsWMNVG/api": {}
+          "/usr/local/share/dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -87,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
         }
       }
     }

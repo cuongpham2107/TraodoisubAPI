@@ -55,7 +55,7 @@ namespace Momo
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configService.CurrentUrl}/coin/?type={type}&id={id}&access_token={_configService.Token}");
             var response = await this.client.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
+            Extensions.WriteLine(await response.Content.ReadAsStringAsync(),ConsoleColor.Blue);
         }
         /// <summary>
         /// Đối với nhiệm vụ like và follow, khi số nhiệm vụ gửi duyệt trên web lớn hơn 8 thì sẽ được nhận xu!
@@ -65,7 +65,7 @@ namespace Momo
         /// <param name="type">Bao gồm: TIKTOK_LIKE, TIKTOK_FOLLOW, TIKTOK_COMMENT</param>
         /// <param name="id">Đối với fields là TIKTOK_COMMENT: là id job đã làm, Đối với fields là TIKTOK_FOLLOW: cố định giá trị là: TIKTOK_FOLLOW_API, Đối với fields là TIKTOK_LIKE: cố định giá trị là: TIKTOK_LIKE_API</param>
         /// <returns></returns>
-        public async Task GetCoins(string type = "", string id = "")
+        public async Task GetCoins(string type = "", string id = "TIKTOK_FOLLOW_API")
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage(HttpMethod.Get, $"{_configService.CurrentUrl}/coin/?type={type}&id={id}&access_token={_configService.Token}"

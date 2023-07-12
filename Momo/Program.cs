@@ -15,36 +15,54 @@ namespace Momo
             ConfigChrome _config = ConfigManager<ConfigChrome>.Instance.Config;
             Services _services = ConfigManager<Services>.Instance.Config;
             //api
-
-            Data data = await _services.GetList<Data>("tiktok_follow");
-            Console.WriteLine(data.data[0]);
-            string profileID = "64a3d2cd6bc6bb5b9f013500";
+            string profileID = "64ae90b1ce66032a15d7710b";
             ChromeOptions options = new();
-            options.BinaryLocation = _config.BinaryLocation;
-            options.AddArgument(_config.UserDataDir.Replace("{id}", profileID));
-            options.AddArgument(_config.Extension.Replace("{id}", profileID));
+            options.BinaryLocation = "/Users/phamcuong/.gologin/browser/orbita-browser-113/Orbita-Browser.app/Contents/MacOS/Orbita";
+            options.AddArgument($"--user-data-dir=/private/tmp/gologin_074247d264/profiles/{profileID}");
+            options.AddArgument($"--load-extension=/Users/phamcuong/.gologin/extensions/cookies-ext/{profileID}");
             options.AddArguments("--disable-default-apps", "--disable-extensions");
-            options.AddArguments(_config.Arguments);
+            //options.setExperimentalOption("useAutomationExtension", false);
+            options.AddArguments(new[] { "--font-masking-mode=2", "--profile-directory=Default", "--disable-encryption", "--donut-pie=undefined", "--lang=en-US", "--flag-switches-begin", "--flag-switches-end" });
             IWebDriver driver = new ChromeDriver(options);
+            while (true)
+            {
+                //TODO: 
+                //0. Lay danh sach nhiem vu
+                Data data = await _services.GetList<Data>("tiktok_follow");
+                //1. Follow 
+                TiktokSelenium tiktok= new TiktokSelenium(driver);
+                int dem = 0;
+               
+                foreach(TikTokFollow item in data.tiktok_follow){
+                    dem++;
+                    tiktok.GotoUrl(item.link);
+                    tiktok.ClickFollowTiktok();
+                    Thread.Sleep(1000);
+                    //2. Duyet nhiem vu
+                    await _services.SubmitTask("TIKTOK_FOLLOW_CACHE", item.id);
 
+                    // Lưu trữ session id của tab trước đó
+                    string previousTab = driver.CurrentWindowHandle;
 
-            //driver.Navigate().GoToUrl(data.data[0].link);
-
-            //foreach (var item in data.data)
-            //{
-            //    Console.WriteLine(item);
-            //}
-
-
-            //TODO: 
-            //0. Lay danh sach nhiem vu
-            //1. Follow 
-            //2. Duyet nhiem vu
-            //3. Nhan xu
-
-
-
+                    // Chuyển đến tab mới
+                    ((IJavaScriptExecutor)driver).ExecuteScript("window.open();");
+                    driver.SwitchTo().Window(driver.WindowHandles.Last());
+                    // Thực hiện các thao tác trên tab mới
+                    // Đóng tab hiện tại
+                    driver.Close();
+                    // Chuyển về tab trước đó
+                    driver.SwitchTo().Window(previousTab);
+                    if(dem >=8 && dem <= 15){
+                        dem = 0;
+                        //3. Nhan xu
+                        await _services.GetCoins("TIKTOK_FOLLOW");
+                        break;
+                    }
+                    
+                }    
+            }
+            
         }
-    }
-    
+        //Lay danh sach nhien vu
+    } 
 }
